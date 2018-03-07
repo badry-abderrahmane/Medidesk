@@ -6,7 +6,7 @@
             <a class="item" v-for="page in pages" @click="$router.push(page.path)"><i :class="page.icon"></i>{{ page.name }}</a>
 
             <div class="right menu">
-                <notif />
+                <!-- <notif /> -->
                 
                 <div class="item">
                     <div class="ui transparent inverted icon input">

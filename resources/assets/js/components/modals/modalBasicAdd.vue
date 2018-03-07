@@ -19,6 +19,7 @@ export default {
             $('#'+guid).modal('show');
         });
 
+
         Event.$on('close-modal', () => {
             $('.ui.modal').modal('hide');
         });

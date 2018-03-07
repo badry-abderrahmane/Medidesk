@@ -3,25 +3,30 @@
     <div class="ui  width center aligned padded grid">
         <div class="row">
             <div class="three wide column">
-                <button-add text="Nouveau Client" :guid="guid"/>
+                <button-add text="Nouveau Client" :guid="guid+1"/>
                 <menu-list-count :list="list"/>
             </div>
             <div class="thirteen wide column">
-                <table-data v-if="!clientsLoading" :headers="headers" :data="clients"/>
+                <table-data v-if="!clientsLoading" :headers="headers" :data="clients" :guid="guid"/>
                 <div v-else>Loading clients</div>
             </div>
         </div>
     </div>
-    <modal-basic title="Nouveau client" :guid="guid">
+    <modal-basic-show title="Informations client" :guid="guid">
+        <div class="content" slot="body">
+            <show-client />
+        </div>
+    </modal-basic-show>
+    <modal-basic-add title="Nouveau client" :guid="guid+1">
         <div class="content" slot="body">
             <form-client-add />
         </div>
-    </modal-basic>
-    <modal-basic title="Modification client" :guid="guid+1">
+    </modal-basic-add>
+    <modal-basic-edit title="Modification client" :guid="guid+2">
         <div class="content" slot="body">
-            <!-- <form-client-edit /> -->
+            <form-client-edit />
         </div>
-    </modal-basic>
+    </modal-basic-edit>
     
   </div>
 </template>
@@ -47,6 +52,7 @@ export default {
             clientsLoading: true,
         }
     },
+    
     mounted(){
         this.getClients()
         Event.$on('load-clients-list', () => {

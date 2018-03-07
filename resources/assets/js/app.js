@@ -27,6 +27,7 @@ window.Event = new Vue();
 
 require('./components');
 require('./forms');
+require('./shows');
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -45,7 +46,7 @@ const app = new Vue({
     },
     mounted(){
       this.$store.dispatch('LOAD_TYPECLIENTS_LIST')
-    //   this.$store.dispatch('LOAD_CLIENTS_LIST')
+      this.$store.dispatch('LOAD_CLIENTS_LIST')
     //   this.$store.dispatch('LOAD_ACTIONS_LIST')
     //   this.$store.dispatch('LOAD_TYPECOMMS_LIST')
     //   this.$store.dispatch('LOAD_ETATS_LIST')
