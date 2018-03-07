@@ -76,7 +76,6 @@ export default {
                 secteur:'',
                 users:[],
             }),
-            color:'success',
             selectedUsers: [],
             lastSelectedUsers: {},
             selectedTypeclient: {},
@@ -85,19 +84,6 @@ export default {
         }
     },
     computed:{
-        editing: function(){
-            if (this.$route.params.id) {
-            this.color = 'warning'
-            return true
-            }else{
-            this.color = 'success'
-            return false
-            }
-        },
-        clientId: function(){
-            return this.$route.params.id
-        },
-
         typeclients: function(){
             return this.$store.state.typeclients
         },

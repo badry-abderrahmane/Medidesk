@@ -24,3 +24,7 @@ Vue.component('modal-basic', require('./components/modals/modalBasic.vue'));
 
 // Inputs
 Vue.component('input-basic', require('./components/inputs/inputBasic.vue'));
+
+
+
+Vue.component('notif', require('./components/notif.vue'));

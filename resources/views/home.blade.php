@@ -16,6 +16,7 @@
       <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.semanticui.min.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ asset('css/buttons.semanticui.min.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.toast.css') }}">
       <link rel="stylesheet" href="/css/app.css">
       <style>
         .Site {
@@ -64,7 +65,7 @@
     <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('js/buttons.colVis.min.js') }}"></script>
-
+    <script src="{{ asset('js/jquery.toast.js') }}"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     
   </body>

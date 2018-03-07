@@ -49,7 +49,7 @@ const app = new Vue({
     //   this.$store.dispatch('LOAD_ACTIONS_LIST')
     //   this.$store.dispatch('LOAD_TYPECOMMS_LIST')
     //   this.$store.dispatch('LOAD_ETATS_LIST')
-    //   this.$store.dispatch('LOAD_USERS_LIST')
+      this.$store.dispatch('LOAD_USERS_LIST')
     //   this.$store.dispatch('LOAD_ROLES_LIST')
     //   this.$store.dispatch('LOAD_TICKETS_LIST')
   
@@ -60,12 +60,7 @@ const app = new Vue({
     },
     created(){
       
-      Event.$on('destroy-datatable', (tableid) => {
-        this.destroyThis(tableid);
-      });
-      // Event.$on('init-slimscroll-list', () => {
-      //   this.slimThisList();
-      // });
+      
       Event.$on('init-slimscroll-chat', () => {
         this.slimThisChat();
       });

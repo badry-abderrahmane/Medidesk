@@ -6,6 +6,7 @@ use App\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
 use Illuminate\Support\Facades\Response;
+use App\Events\ClientAdded;
 use Auth;
 
 class ClientController extends Controller
@@ -26,7 +27,10 @@ class ClientController extends Controller
     public function store(ClientRequest $request)
     {
         $client = Client::create($request->toArray());
-        $client->users()->sync($request->users);
+        if($client){
+            $client->users()->sync($request->users);
+            event(new ClientAdded($client));
+        }
 
     return Response::json(['message' => 'Client bien ajouté'], 200);
     }

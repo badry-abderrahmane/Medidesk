@@ -1,4 +1,4 @@
 
 
 
-Vue.component('form-client', require('./forms/client.vue'));
+Vue.component('form-client-add', require('./forms/clients/add.vue'));

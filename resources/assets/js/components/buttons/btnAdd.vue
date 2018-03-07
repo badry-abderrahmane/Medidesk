@@ -7,10 +7,10 @@
 
 <script>
 export default {
-  props: ["text"],
+  props: ["text","guid"],
   methods:{
         showModal(){
-            Event.$emit('show-modal', 'tableAdd');
+            Event.$emit('show-modal', this.guid);
         }
   }
 }

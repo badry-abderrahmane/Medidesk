@@ -8,7 +8,7 @@
         </thead>
         <tbody>
             <tr v-for="row in data">
-                <td v-for="cell in row">{{ cell }}</td>
+                <td v-for="cell in row" v-html="cell"></td>
                 <td>
                     <a  class="pointer" @click="$router.push({path: 'clients/show/'+row.id})"><i class="  blue eye icon"></i></a>
                     <a  class="pointer" @click="$router.push({path: 'clients/show/'+row.id})"><i class="  yellow edit icon"></i></a>
@@ -32,8 +32,14 @@ export default {
         this.datatableThis(tableid);
       });
       Event.$on('fill-filter', (param) => {
-        //this.table.fnFilter(param);
         this.table.search( param ).draw();
+      });
+      Event.$on('destroy-datatable', (param) => {
+          if(this.table != ''){
+            this.table.destroy();
+            this.table = ''
+          }
+        
       });
   },
   methods:{
