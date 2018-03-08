@@ -2,7 +2,7 @@
     <div class="ui  width center aligned padded grid">
         <div class="row">
             <div class="wide column">
-                <table-data-embed :headers="headers" :data="contacts" instanceName="contact"/>
+                <table-data-embed :headers="headers" :data="contacts" instanceName="contact" :parentId="clientid" />
             </div>
             
         </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    props:["contacts"],
+    props:["contacts","clientid"],
     data(){
         return {
             headers: [

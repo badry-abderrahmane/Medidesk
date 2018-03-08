@@ -7,7 +7,7 @@
                 <menu-list-count :list="list"/>
             </div>
             <div class="thirteen wide column">
-                <table-data v-if="!clientsLoading" :headers="headers" :data="clients" :guid="guid"/>
+                <table-data v-if="!clientsLoading" :headers="headers" :data="clients" :guid="guid" instanceName="clients"/>
                 <div v-else>Loading clients</div>
             </div>
         </div>
@@ -27,7 +27,8 @@
             <form-client-edit />
         </div>
     </modal-basic-edit>
-    
+    <modal-basic-delete />
+        
   </div>
 </template>
 

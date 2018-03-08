@@ -5,7 +5,7 @@
                 <Informations :client="client" />
             </div>
             <div slot="tab_2">
-                <Contacts :contacts="contacts"/>
+                <Contacts :contacts="contacts" :clientid="client.id"/>
             </div>
             <div slot="tab_3">
                 <Adresses />
@@ -43,9 +43,8 @@ export default {
         }
     },
     created(){
+        
         Event.$on('load-instance-show', (instance) => {
-            console.log(instance+'by load instance show');
-            
             this.getClient(instance)
         });
     },
@@ -54,6 +53,7 @@ export default {
             this.client = { typeclient:{ value:'' }}
             axios.get('/clients/'+clientId)
                 .then(response => {
+                Event.$emit('load-parent-instance-embeded', response.data.id);
                 this.client = response.data;
                 this.makeContacts(response.data.contacts)
             });

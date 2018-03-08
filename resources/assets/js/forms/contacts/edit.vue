@@ -7,7 +7,7 @@
                 <label>Client</label>
                 <basic-select :options="clients"
                             :selected-option="selectedClient"
-                            placeholder="Choisir .."
+                            placeholder="Choisir .." :isDisabled="true"
                             @select="onSelectClient" />
                 <small class="helper" v-if="form.errors.has('client_id')" v-text="form.errors.get('client_id')"></small>
             </div>
@@ -69,6 +69,7 @@ export default {
     },
     created(){
       Event.$on('load-instance-embeded', (instance) => {
+        this.form.reset()
         this.contactId = instance
         this.getContact(instance)
       });
@@ -109,8 +110,8 @@ export default {
             this.selectedClient = value
           }
         });
-      }
-        
+      },
+      
     }
 }
 </script>

@@ -12,7 +12,11 @@
                 <td>
                     <button-show :instance="row.id" :guid="guid"></button-show>
                     <button-edit :instance="row.id" :guid="guid+2"></button-edit>
-                    <a  class="pointer" @click="$router.push({path: 'clients/show/'+row.id})"><i class="  red trash alternate icon"></i></a>
+                    <button-delete :instanceid="row.id" 
+                                    :instance="instanceName" 
+                                    message="En supprimant cet instance vous allez supprimer toutes ses instances reliées (Adresses, Contacts, Tickets ...)." 
+                                    title="Suppression Instance">
+                    </button-delete>
                 </td>
             </tr>
         </tbody>
@@ -21,7 +25,7 @@
 
 <script>
 export default {
-  props: ["headers","data","guid"],
+  props: ["headers","data","guid","instanceName"],
   data(){
       return {
           table: '',

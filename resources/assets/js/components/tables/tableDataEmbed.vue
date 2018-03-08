@@ -16,7 +16,11 @@
                     <td v-for="cell in row" v-html="cell"></td>
                     <td>
                         <a class="pointer" @click="editInstance(row.id)"><i class="yellow edit icon"></i></a>
-                        <a  class="pointer" @click="$router.push({path: 'clients/show/'+row.id})"><i class="  red trash alternate icon"></i></a>
+                        <button-delete :instanceid="row.id" 
+                                    :instance="instanceName+'s'" 
+                                    message="En supprimant cet instance vous allez supprimer toutes ses instances reliées (Adresses, Contacts, Tickets ...)." 
+                                    title="Suppression Instance">
+                        </button-delete>
                     </td>
                 </tr>
             </tbody>
@@ -37,7 +41,7 @@
 
 <script>
 export default {
-  props: ["headers","data","instanceName"],
+  props: ["headers","data","instanceName","parentId"],
   data(){
       return {
           show: 'list',
@@ -48,14 +52,13 @@ export default {
       Event.$on('show-instance-list', () => {
         this.listInstance();
       });
-
-      
   },
     methods:{
         listInstance(){
             this.show = 'list'
         },
         addInstance(){
+            Event.$emit('load-parent-instance-embeded', this.parentId);
             this.show = 'add'
         },
         editInstance(instanceId){

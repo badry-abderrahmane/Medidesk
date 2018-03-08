@@ -7,7 +7,7 @@
                 <label>Client</label>
                 <basic-select :options="clients"
                             :selected-option="selectedClient"
-                            placeholder="Choisir .."
+                            placeholder="Choisir .." 	:isDisabled="true"
                             @select="onSelectClient" />
                 <small class="helper" v-if="form.errors.has('client_id')" v-text="form.errors.get('client_id')"></small>
             </div>
@@ -73,6 +73,12 @@ export default {
         },
         
     },
+    created(){
+      Event.$on('load-parent-instance-embeded', (parent) => {
+        this.form.reset()
+        this.getClient(parent)
+      });
+    },
     methods:{
         onSelectClient(item){
             this.selectedClient = item
@@ -88,7 +94,15 @@ export default {
             .catch(errors =>{
                 console.log(errors);
             });
-      },
+        },
+        getClient(clientId){
+            this.selectedClient = {}
+            this.$store.state.clients.map((value,key)=> {
+                if (value.value == clientId) {
+                    this.selectedClient = value
+                }
+            });
+        },
         
     }
 }
